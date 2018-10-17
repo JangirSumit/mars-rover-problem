@@ -16,38 +16,31 @@ namespace MarsRoverProblem
 
     public class Position
     {
-        public int x { get; set; }
-        public int y { get; set; }
-        public Directions direction { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public Directions Direction { get; set; }
 
         public Position()
         {
-            x = y = 0;
-            direction = Directions.N;
-        }
-
-        public void UpdatePosition(int x, int y, Directions dir)
-        {
-            this.x = x;
-            this.y = y;
-            this.direction = dir;
+            X = Y = 0;
+            Direction = Directions.N;
         }
 
         public void Rotate90Left()
         {
-            switch (this.direction)
+            switch (this.Direction)
             {
                 case Directions.N:
-                    this.direction = Directions.W;
+                    this.Direction = Directions.W;
                     break;
                 case Directions.S:
-                    this.direction = Directions.E;
+                    this.Direction = Directions.E;
                     break;
                 case Directions.E:
-                    this.direction = Directions.N;
+                    this.Direction = Directions.N;
                     break;
                 case Directions.W:
-                    this.direction = Directions.S;
+                    this.Direction = Directions.S;
                     break;
                 default:
                     break;
@@ -56,19 +49,19 @@ namespace MarsRoverProblem
 
         public void Rotate90Right()
         {
-            switch (this.direction)
+            switch (this.Direction)
             {
                 case Directions.N:
-                    this.direction = Directions.E;
+                    this.Direction = Directions.E;
                     break;
                 case Directions.S:
-                    this.direction = Directions.W;
+                    this.Direction = Directions.W;
                     break;
                 case Directions.E:
-                    this.direction = Directions.S;
+                    this.Direction = Directions.S;
                     break;
                 case Directions.W:
-                    this.direction = Directions.N;
+                    this.Direction = Directions.N;
                     break;
                 default:
                     break;
@@ -77,19 +70,19 @@ namespace MarsRoverProblem
 
         public void MoveInSameDirection()
         {
-            switch (this.direction)
+            switch (this.Direction)
             {
                 case Directions.N:
-                    this.y += 1;
+                    this.Y += 1;
                     break;
                 case Directions.S:
-                    this.y -= 1;
+                    this.Y -= 1;
                     break;
                 case Directions.E:
-                    this.x += 1;
+                    this.X += 1;
                     break;
                 case Directions.W:
-                    this.x -= 1;
+                    this.X -= 1;
                     break;
                 default:
                     break;
@@ -101,18 +94,15 @@ namespace MarsRoverProblem
     {
         static void Main(string[] args)
         {
-            var maxPoints = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
-            var startPositions = Console.ReadLine().Split(' ');
+            var maxPoints = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToList();
+            var startPositions = Console.ReadLine().Trim().Split(' ');
             Position position = new Position();
 
             if (startPositions.Count() == 3)
             {
-                position = new Position
-                {
-                    x = Convert.ToInt32(startPositions[0]),
-                    y = Convert.ToInt32(startPositions[1]),
-                    direction = (Directions)Enum.Parse(typeof(Directions), startPositions[2])
-                };
+                position.X = Convert.ToInt32(startPositions[0]);
+                position.Y = Convert.ToInt32(startPositions[1]);
+                position.Direction = (Directions)Enum.Parse(typeof(Directions), startPositions[2]);
             }
 
             var moves = Console.ReadLine().ToUpper();
@@ -135,7 +125,7 @@ namespace MarsRoverProblem
                 }
             }
 
-            Console.WriteLine($"{position.x} {position.y} {position.direction.ToString()}");
+            Console.WriteLine($"{position.X} {position.Y} {position.Direction.ToString()}");
             Console.ReadLine();
         }
     }
