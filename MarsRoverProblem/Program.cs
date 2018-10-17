@@ -121,8 +121,17 @@ namespace MarsRoverProblem
                         position.Rotate90Right();
                         break;
                     default:
+                        Console.WriteLine($"Invalid Character {move}");
                         break;
                 }
+
+                if (position.X < 0 || position.X > maxPoints[0] || position.Y < 0 || position.Y > maxPoints[1])
+                {
+                    Console.WriteLine($"Oops! Position can not be beyond bounderies (0 , 0) and ({maxPoints[0]} , {maxPoints[1]})");
+                    break;
+                }
+
+                //Console.WriteLine($"{position.X} {position.Y} {position.Direction.ToString()}");
             }
 
             Console.WriteLine($"{position.X} {position.Y} {position.Direction.ToString()}");
