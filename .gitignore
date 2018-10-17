@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MarsRoverProblem/obj/Debug
+/MarsRoverProblem/bin/Debug
+/MarsRoverProblem/.vs/MarsRoverProblem/v15
