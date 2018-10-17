@@ -35,12 +35,44 @@ namespace MarsRoverProblem
 
         public void Rotate90Left()
         {
-
+            switch (this.direction)
+            {
+                case Directions.N:
+                    this.direction = Directions.W;
+                    break;
+                case Directions.S:
+                    this.direction = Directions.E;
+                    break;
+                case Directions.E:
+                    this.direction = Directions.N;
+                    break;
+                case Directions.W:
+                    this.direction = Directions.S;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Rotate90Right()
         {
-            throw new NotImplementedException();
+            switch (this.direction)
+            {
+                case Directions.N:
+                    this.direction = Directions.E;
+                    break;
+                case Directions.S:
+                    this.direction = Directions.W;
+                    break;
+                case Directions.E:
+                    this.direction = Directions.S;
+                    break;
+                case Directions.W:
+                    this.direction = Directions.N;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void MoveInSameDirection()
@@ -73,7 +105,7 @@ namespace MarsRoverProblem
             var startPositions = Console.ReadLine().Split(' ');
             Position position = new Position();
 
-            if (startPositions.Count() == 2)
+            if (startPositions.Count() == 3)
             {
                 position = new Position
                 {
@@ -102,6 +134,9 @@ namespace MarsRoverProblem
                         break;
                 }
             }
+
+            Console.WriteLine($"{position.x} {position.y} {position.direction.ToString()}");
+            Console.ReadLine();
         }
     }
 }
