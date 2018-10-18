@@ -1,4 +1,7 @@
-﻿namespace MarsRoverProblem
+﻿using System;
+using System.Collections.Generic;
+
+namespace MarsRoverProblem
 {
     public enum Directions
     {
@@ -8,7 +11,14 @@
         W = 4//West
     }
 
-    public class Position
+    public interface IPosition
+    {
+        void Rotate90Left();
+        void Rotate90Right();
+        void MoveInSameDirection();
+    }
+
+    public class Position : IPosition
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -80,6 +90,35 @@
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void StartMoving(List<int> maxPoints, string moves)
+        {
+            foreach (var move in moves)
+            {
+                switch (move)
+                {
+                    case 'M':
+                        this.MoveInSameDirection();
+                        break;
+                    case 'L':
+                        this.Rotate90Left();
+                        break;
+                    case 'R':
+                        this.Rotate90Right();
+                        break;
+                    default:
+                        Console.WriteLine($"Invalid Character {move}");
+                        break;
+                }
+
+                if (this.X < 0 || this.X > maxPoints[0] || this.Y < 0 || this.Y > maxPoints[1])
+                {
+                    throw new Exception($"Oops! Position can not be beyond bounderies (0 , 0) and ({maxPoints[0]} , {maxPoints[1]})");
+                }
+
+                //Console.WriteLine($"{position.X} {position.Y} {position.Direction.ToString()}");
             }
         }
     }
