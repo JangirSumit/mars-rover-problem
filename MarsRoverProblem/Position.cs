@@ -16,6 +16,7 @@ namespace MarsRoverProblem
         void Rotate90Left();
         void Rotate90Right();
         void MoveInSameDirection();
+        void StartMoving(List<int> maxPoints, string moves);
     }
 
     public class Position : IPosition
