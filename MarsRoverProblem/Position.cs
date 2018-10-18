@@ -13,9 +13,6 @@ namespace MarsRoverProblem
 
     public interface IPosition
     {
-        void Rotate90Left();
-        void Rotate90Right();
-        void MoveInSameDirection();
         void StartMoving(List<int> maxPoints, string moves);
     }
 
@@ -31,7 +28,7 @@ namespace MarsRoverProblem
             Direction = Directions.N;
         }
 
-        public void Rotate90Left()
+        private void Rotate90Left()
         {
             switch (this.Direction)
             {
@@ -52,7 +49,7 @@ namespace MarsRoverProblem
             }
         }
 
-        public void Rotate90Right()
+        private void Rotate90Right()
         {
             switch (this.Direction)
             {
@@ -73,7 +70,7 @@ namespace MarsRoverProblem
             }
         }
 
-        public void MoveInSameDirection()
+        private void MoveInSameDirection()
         {
             switch (this.Direction)
             {
@@ -118,8 +115,6 @@ namespace MarsRoverProblem
                 {
                     throw new Exception($"Oops! Position can not be beyond bounderies (0 , 0) and ({maxPoints[0]} , {maxPoints[1]})");
                 }
-
-                //Console.WriteLine($"{position.X} {position.Y} {position.Direction.ToString()}");
             }
         }
     }
