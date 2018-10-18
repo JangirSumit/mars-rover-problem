@@ -8,7 +8,7 @@ namespace MarsRoverProblemTest
     public class MarsRoverProblemTest
     {
         [TestMethod]
-        public void TestScanrio_1()
+        public void TestScanrio_12N_LMLMLMLMM()
         {
             Position position = new Position()
             {
@@ -29,7 +29,7 @@ namespace MarsRoverProblemTest
         }
 
         [TestMethod]
-        public void TestScanrio_2()
+        public void TestScanrio_33E_MRRMMRMRRM()
         {
             Position position = new Position()
             {
